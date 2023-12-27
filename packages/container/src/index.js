@@ -1,3 +1,3 @@
 import('./bootstrap');
 
-console.log('here to trigger the build');
+console.log('here to trigger the build again');

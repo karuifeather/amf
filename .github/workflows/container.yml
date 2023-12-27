@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to AWS S3
-        uses: aws-actions/aws-cli@v2
+        uses: imehedi/actions-awscli-v2@latest
         with:
           args: s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
         env:
