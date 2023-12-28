@@ -13,14 +13,15 @@ import Link from '@mui/material/Link';
 import { makeStyles } from '@mui/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import MaterialLink from '@mui/material/Link';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
+      <MaterialLink component={Link} to="/" color="inherit">
+        AMF
+      </MaterialLink>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -45,7 +46,25 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1, 1.5),
   },
   heroContent: {
+    backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
+  },
+  mainCardContainer: {
+    backgroundColor: theme.palette.background.paper,
+    paddingBottom: theme.spacing(6),
+  },
+  cardContainer: {
+    justifyContent: 'center',
+    width: '85%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    padding: '1.5rem',
+    backgroundColor: theme.palette.background.paper,
+  },
+  cardGrid: {
+    padding: theme.spacing(10),
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
   },
   cardHeader: {
     backgroundColor:
@@ -60,9 +79,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   footer: {
+    backgroundColor: theme.palette.background.paper,
     borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
+    paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing(6),
@@ -168,8 +187,17 @@ export default function Pricing() {
         </Typography>
       </Container>
       {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
+      <Container
+        maxWidth="lg"
+        component="main"
+        className={classes.mainCardContainer}
+      >
+        <Grid
+          container
+          className={classes.cardContainer}
+          spacing={5}
+          alignItems="flex-end"
+        >
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid

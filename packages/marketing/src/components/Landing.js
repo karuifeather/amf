@@ -17,7 +17,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <MaterialLink component={Link} to="/" color="inherit">
-        Your Website
+        AMF
       </MaterialLink>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -41,12 +41,18 @@ const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
   },
+  wrapperGrid: {
+    justifyContent: 'center',
+  },
   cardGrid: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(10),
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
   card: {
     height: '100%',
+    width: '24rem',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -62,7 +68,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [
+  {
+    name: 'Microservices Overview',
+    desc: 'Learn about the benefits and challenges of microservices architecture.',
+  },
+  {
+    name: 'Frontend Modularization',
+    desc: 'Explore the advantages of microfrontend architecture for scalable and maintainable UIs.',
+  },
+  {
+    name: 'Service Communication',
+    desc: 'Understand different approaches to communication between microservices.',
+  },
+  {
+    name: 'Containerization with Docker',
+    desc: 'Discover how Docker containers simplify deployment in a microservices environment.',
+  },
+  {
+    name: 'API Gateway Best Practices',
+    desc: 'Best practices for implementing an API gateway to manage microservices communication.',
+  },
+  {
+    name: 'Continuous Integration in Microservices',
+    desc: 'Implement CI/CD pipelines for efficient development and deployment workflows.',
+  },
+  {
+    name: 'Scaling Microservices',
+    desc: 'Strategies for scaling microservices horizontally to handle increased workloads.',
+  },
+  {
+    name: 'User Authentication in Microfrontend',
+    desc: 'Secure user authentication strategies in a microfrontend architecture.',
+  },
+  {
+    name: 'Monitoring and Logging',
+    desc: 'Tools and techniques for monitoring and logging in a microservices ecosystem.',
+  },
+  {
+    name: 'Microfrontend Security Practices',
+    desc: 'Explore security best practices for building secure microfrontend applications.',
+  },
+  {
+    name: 'GraphQL in Microservices',
+    desc: 'Introduction to using GraphQL for efficient data fetching in a microservices environment.',
+  },
+  {
+    name: 'Event-Driven Architecture',
+    desc: 'Implement event-driven architecture for loosely coupled microservices communication.',
+  },
+];
+
+console.log(cards);
 
 export default function Album() {
   const classes = useStyles();
@@ -80,7 +137,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Home Page
+              Microfrontend with React and Vue
             </Typography>
             <Typography
               variant="h5"
@@ -88,9 +145,9 @@ export default function Album() {
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Explore our fully featured Microfrontend, leveraging the power of
+              React and Vue. Discover the seamless integration, modular
+              development, and enhanced user experiences.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
@@ -102,19 +159,17 @@ export default function Album() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/pricing">
-                    <Button variant="outlined" color="primary">
-                      Pricing
-                    </Button>
-                  </Link>
+                  <Button variant="outlined" color="primary">
+                    Learn More
+                  </Button>
                 </Grid>
               </Grid>
             </div>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="lg">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid className={classes.wrapperGrid} container spacing={8}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -125,12 +180,9 @@ export default function Album() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.name}
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
+                    <Typography>{card.desc}</Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
@@ -148,8 +200,13 @@ export default function Album() {
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
+        <Typography
+          variant="h6"
+          align="center"
+          color="textSecondary"
+          gutterBottom
+        >
+          AMF
         </Typography>
         <Typography
           variant="subtitle1"
@@ -157,7 +214,7 @@ export default function Album() {
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          Fully featured Microfrontend with React and Vue
         </Typography>
         <Copyright />
       </footer>

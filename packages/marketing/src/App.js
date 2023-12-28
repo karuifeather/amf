@@ -10,6 +10,15 @@ import Landing from './components/Landing';
 import Pricing from './components/Pricing';
 
 const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+  },
   breakpoints: {
     values: {
       mobile: 0,
