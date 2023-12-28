@@ -1,3 +1,3 @@
 import('./bootstrap');
 
-console.log('hopefully now');
+console.log('hopefully nope');
