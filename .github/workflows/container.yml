@@ -30,6 +30,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: List contents of the working directory
+        run: ls -R
+
       - name: Deploy to AWS S3
         uses: imehedi/actions-awscli-v2@latest
         with:
