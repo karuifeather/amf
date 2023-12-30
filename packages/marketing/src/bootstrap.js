@@ -1,12 +1,17 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createMemoryHistory } from '@tanstack/react-router';
+import {
+  createMemoryHistory,
+  createBrowserHistory,
+} from '@tanstack/react-router';
 
 import App from './App';
 
-const mount = (el, { onNavigate }) => {
+const mount = (el, { onNavigate, defaultHistory }) => {
   const root = createRoot(el);
-  const history = createMemoryHistory();
+
+  // deafaults to browserHistory in development
+  const history = defaultHistory || createMemoryHistory();
 
   history.subscribe(() => {
     onNavigate(history.location);
@@ -28,10 +33,12 @@ const mount = (el, { onNavigate }) => {
 if (process.env.NODE_ENV === 'development') {
   const rootEl = document.getElementById('_root-marketing');
 
-  const props = { onNavigate: () => {} };
-
+  // statements below isolates the package in development
   if (rootEl) {
-    mount(rootEl, props);
+    mount(rootEl, {
+      onNavigate: () => {},
+      defaultHistory: createBrowserHistory(),
+    });
   }
 }
 
