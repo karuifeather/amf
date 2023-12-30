@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -119,8 +119,6 @@ const cards = [
   },
 ];
 
-console.log(cards);
-
 export default function Album() {
   const classes = useStyles();
 
@@ -171,7 +169,7 @@ export default function Album() {
           {/* End hero unit */}
           <Grid className={classes.wrapperGrid} container spacing={8}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card.name} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}

@@ -1,15 +1,28 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
 import {
   StyledEngineProvider,
   createTheme,
   ThemeProvider,
 } from '@mui/material/styles';
+import {
+  Router,
+  RouterProvider,
+  createMemoryHistory,
+} from '@tanstack/react-router';
 
-import Landing from './components/Landing';
-import Pricing from './components/Pricing';
+import { routeTree } from './router';
 
 const theme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          padding: '1rem',
+        },
+      },
+    },
+  },
   palette: {
     mode: 'dark',
     primary: {
@@ -29,17 +42,18 @@ const theme = createTheme({
   },
 });
 
-export default () => {
+const history = createMemoryHistory();
+const router = new Router({ routeTree, history });
+
+export default ({ callback }) => {
+  router.subscribe('onResolved', callback);
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <StyledEngineProvider injectFirst>
-          <BrowserRouter>
-            <Routes>
-              <Route exact path="/pricing" Component={Pricing} />
-              <Route path="/" Component={Landing} />
-            </Routes>
-          </BrowserRouter>
+          <RouterProvider router={router} />
         </StyledEngineProvider>
       </ThemeProvider>
     </React.Fragment>

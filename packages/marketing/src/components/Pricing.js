@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from '@tanstack/react-router';
 
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
