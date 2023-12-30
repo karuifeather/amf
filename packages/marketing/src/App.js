@@ -5,11 +5,7 @@ import {
   createTheme,
   ThemeProvider,
 } from '@mui/material/styles';
-import {
-  Router,
-  RouterProvider,
-  createMemoryHistory,
-} from '@tanstack/react-router';
+import { Router, RouterProvider } from '@tanstack/react-router';
 
 import { routeTree } from './router';
 
@@ -42,11 +38,9 @@ const theme = createTheme({
   },
 });
 
-const history = createMemoryHistory();
-const router = new Router({ routeTree, history });
-
-export default ({ callback }) => {
-  router.subscribe('onResolved', callback);
+export default ({ onNavigate, history }) => {
+  const router = new Router({ routeTree, history });
+  router.subscribe('onResolved', onNavigate);
 
   return (
     <React.Fragment>

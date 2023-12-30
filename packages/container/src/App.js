@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
   StyledEngineProvider,
@@ -7,8 +6,8 @@ import {
   ThemeProvider,
 } from '@mui/material/styles';
 
-import MarketingApp from './components/MarketingApp';
-import Header from './components/Header';
+import { Router, RouterProvider } from '@tanstack/react-router';
+import { routeTree } from './router';
 
 const theme = createTheme({
   components: {
@@ -39,18 +38,15 @@ const theme = createTheme({
   },
 });
 
-export default () => {
+export default ({ history }) => {
+  const router = new Router({ routeTree, history });
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <StyledEngineProvider injectFirst>
-          <BrowserRouter>
-            <div>
-              <Header />
-              <MarketingApp />
-            </div>
-          </BrowserRouter>
+          <RouterProvider router={router} />
         </StyledEngineProvider>
       </ThemeProvider>
     </React.Fragment>

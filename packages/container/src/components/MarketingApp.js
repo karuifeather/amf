@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { mount } from 'marketing/MarketingApp';
-import { createBrowserHistory } from 'history';
+
+import { history } from '../bootstrap';
 
 export default () => {
   const ref = useRef(null);
-  const history = createBrowserHistory();
 
   useEffect(() => {
-    mount(ref.current, {
+    const { onParentNavigate } = mount(ref.current, {
       onNavigate: ({ toLocation: { pathname: nextPathName } }) => {
         const { pathname } = history.location;
 
@@ -15,6 +15,10 @@ export default () => {
           history.push(nextPathName);
         }
       },
+    });
+
+    history.subscribe(() => {
+      onParentNavigate(history.location);
     });
   });
 
