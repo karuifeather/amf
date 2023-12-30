@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
 import {
   StyledEngineProvider,
   createTheme,
@@ -10,6 +11,15 @@ import MarketingApp from './components/MarketingApp';
 import Header from './components/Header';
 
 const theme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          padding: '1rem',
+        },
+      },
+    },
+  },
   palette: {
     mode: 'dark',
     primary: {
@@ -33,6 +43,7 @@ export default () => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <StyledEngineProvider injectFirst>
           <BrowserRouter>
             <div>
