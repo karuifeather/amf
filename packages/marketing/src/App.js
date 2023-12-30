@@ -40,7 +40,6 @@ const theme = createTheme({
 
 export default ({ onNavigate, history }) => {
   const router = new Router({ routeTree, history });
-  router.subscribe('onResolved', onNavigate);
 
   return (
     <React.Fragment>

@@ -8,7 +8,11 @@ const mount = (el, { onNavigate }) => {
   const root = createRoot(el);
   const history = createMemoryHistory();
 
-  root.render(<App onNavigate={onNavigate} history={history} />);
+  history.subscribe(() => {
+    onNavigate(history.location);
+  });
+
+  root.render(<App history={history} />);
 
   return {
     onParentNavigate({ pathname: nextPathName }) {
