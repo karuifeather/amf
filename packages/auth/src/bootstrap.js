@@ -35,7 +35,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 };
 
 if (process.env.NODE_ENV === 'development') {
-  const rootEl = document.getElementById('_root-marketing');
+  const rootEl = document.getElementById('_root-auth');
 
   // statements below isolates the package in development
   if (rootEl) {
